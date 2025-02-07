@@ -15,7 +15,7 @@ The topology consists of:
 |---------|-------------|----------------|
 | 10      | Sales       | PC0 (Fa0/1), PC2 (Fa0/1) |
 | 20      | HR          | PC1 (Fa0/2), PC3 (Fa0/2) |
-| 99      | Management  | Switch Management Interface |
+| 30     | Management  | Switch Management Interface |
 
 ## Configuration Steps
 ### 1. Configure VLANs on Switches
@@ -24,7 +24,7 @@ Switch(config)# vlan 10
 Switch(config-vlan)# name Sales
 Switch(config-vlan)# vlan 20
 Switch(config-vlan)# name HR
-Switch(config-vlan)# vlan 99
+Switch(config-vlan)# vlan 30
 Switch(config-vlan)# name Management
 ```
 
@@ -38,7 +38,7 @@ Switch(config)# interface FastEthernet 0/2
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 20
 ```
-Repeat for other switch interfaces as per VLAN assignments.
+
 
 ### 3. Configure Trunk Ports
 ```bash
@@ -46,7 +46,6 @@ Switch(config)# interface FastEthernet 1/1
 Switch(config-if)# switchport mode trunk
 Switch(config-if)# switchport trunk allowed vlan 10,20
 ```
-Repeat for the trunk port on Switch1.
 
 ### 4. Verify VLAN Configuration
 ```bash
@@ -60,12 +59,6 @@ Switch# show interfaces trunk
 
 ## Notes
 - Ensure the trunk link allows required VLANs.
-- For inter-VLAN communication, configure a Layer 3 device (router or Layer 3 switch).
-
-## Files
-- **Packet Tracer File:** [Link to the topology file]
-- **Configuration Scripts:** VLAN setup commands
 
 ## Author
-[Your Name]
-
+Harshith
